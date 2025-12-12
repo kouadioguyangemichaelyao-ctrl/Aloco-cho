@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Aloco'cho - Commande en ligne</title>
+<style>
+body { font-family: Arial, sans-serif; background:#faf7f2; padding:20px; }
+h1 { text-align:center; color:#d48b1c; }
+.item { background:white; padding:15px; border-radius:10px; margin-bottom:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+button { width:100%; padding:12px; border:none; background:#d48b1c; color:white; font-size:16px; border-radius:8px; margin-top:20px; }
+select, input { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-top:10px; }
+</style>
+
+<script>
+function sendOrder(){
+    let menu = document.getElementById("menu").value;
+    let qty = document.getElementById("qty").value;
+    let text = `Bonjour, je voudrais commander: ${qty} x ${menu}`;
+    let url = "https://api.whatsapp.com/send?phone=2250700000000&text=" + encodeURIComponent(text);
+    window.location.href = url;
+}
+</script>
+</head>
+<body>
+
+<h1>Aloco'cho - Commande</h1>
+
+<div class="item">
+    <label>Choisir un plat :</label>
+    <select id="menu">
+        <option>Frites de banane + Poisson - 3000F</option>
+        <option>Frites de banane + Poulet - 3000F</option>
+        <option>Garba - 1000F</option>
+        <option>Frites de pomme de terre + Poulet - 3500F</option>
+    </select>
+
+    <label>Quantité :</label>
+    <input id="qty" type="number" value="1" min="1">
+</div>
+
+<button onclick="sendOrder()">Envoyer la commande sur WhatsApp</button>
+
+</body>
+</html>
